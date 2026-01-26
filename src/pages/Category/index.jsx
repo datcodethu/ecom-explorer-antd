@@ -1,11 +1,11 @@
-import { useParams } from "react-router-dom";
-import Products from "../../components/Products";
-import { makeUpLabel } from "../../utils";
+import { useParams } from 'react-router-dom'
+import Products from '../../components/Products'
+import { makeUpLabel } from '../../utils'
 
 function Category(props) {
   // returned from `useParams`
-  const params = useParams();
-  const key = params.categoryId;
+  const params = useParams()
+  const key = params.categoryId
 
   return (
     <>
@@ -14,7 +14,7 @@ function Category(props) {
         <Products category={key} />
       </div>
     </>
-  );
+  )
 }
 
-export default Category;
+export default Category

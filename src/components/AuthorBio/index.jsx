@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 function AuthorBio() {
   return (
@@ -7,11 +7,10 @@ function AuthorBio() {
 
       <p>
         I have a passion for developing websites that showcase my creativity.
-        <br />I love the adventure of finding caches and connecting with new
-        people who have the same interest.
+        <br />I love the adventure of finding caches and connecting with new people who have the same interest.
       </p>
     </div>
-  );
+  )
 }
 
-export default AuthorBio;
+export default AuthorBio

@@ -1,44 +1,44 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, message } from 'antd';
-import App from '../../../App';
-import '../../../assets/styles/login.scss';
-import { getAuth } from '../../../services';
-import { AppContext } from '../../../context';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react'
+import { LockOutlined, UserOutlined } from '@ant-design/icons'
+import { Button, Checkbox, Form, Input, message } from 'antd'
+import App from '../../../App'
+import '../../../assets/styles/login.scss'
+import { getAuth } from '../../../services'
+import { AppContext } from '../../../context'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Login() {
-  const { user, setUser } = useContext(AppContext);
-  const [loading, setLoading] = useState(false);
-  const navigator = useNavigate();
+  const { user, setUser } = useContext(AppContext)
+  const [loading, setLoading] = useState(false)
+  const navigator = useNavigate()
 
   useEffect(() => {
-    const userInfo = localStorage.getItem('user');
+    const userInfo = localStorage.getItem('user')
     if (!!userInfo) {
-      setUser(JSON.parse(userInfo));
+      setUser(JSON.parse(userInfo))
     }
-  }, [setUser]);
+  }, [setUser])
 
   useEffect(() => {
     if (!!user) {
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user))
       setTimeout(() => {
-        setLoading(false);
-        navigator('/admin/dash-board');
-      }, 500);
-    } else localStorage.setItem('user', '');
-  }, [user, navigator]);
+        setLoading(false)
+        navigator('/admin/dash-board')
+      }, 500)
+    } else localStorage.setItem('user', '')
+  }, [user, navigator])
 
   const onFinish = (values) => {
-    setLoading(true);
-    console.log('Received values of form: ', values);
+    setLoading(true)
+    console.log('Received values of form: ', values)
     getAuth(values)
       .then((res) => {
-        message.success(`Hi ${values.username}. Welcome back.`);
-        setUser(res);
+        message.success(`Hi ${values.username}. Welcome back.`)
+        setUser(res)
       })
-      .catch((err) => message.error(err.message));
-  };
+      .catch((err) => message.error(err.message))
+  }
 
   return (
     <App>
@@ -48,7 +48,7 @@ function Login() {
         initialValues={{
           remember: true,
           username: 'emilys',
-          password: 'emilyspass',
+          password: 'emilyspass'
         }}
         onFinish={onFinish}
       >
@@ -57,29 +57,22 @@ function Login() {
           rules={[
             {
               required: true,
-              message: 'Please input your Username!',
-            },
+              message: 'Please input your Username!'
+            }
           ]}
         >
-          <Input
-            prefix={<UserOutlined className='site-form-item-icon' />}
-            placeholder='Username'
-          />
+          <Input prefix={<UserOutlined className='site-form-item-icon' />} placeholder='Username' />
         </Form.Item>
         <Form.Item
           name='password'
           rules={[
             {
               required: true,
-              message: 'Please input your Password!',
-            },
+              message: 'Please input your Password!'
+            }
           ]}
         >
-          <Input
-            prefix={<LockOutlined className='site-form-item-icon' />}
-            type='password'
-            placeholder='Password'
-          />
+          <Input prefix={<LockOutlined className='site-form-item-icon' />} type='password' placeholder='Password' />
         </Form.Item>
         <Form.Item>
           <Form.Item name='remember' valuePropName='checked' noStyle>
@@ -92,12 +85,7 @@ function Login() {
         </Form.Item>
 
         <Form.Item>
-          <Button
-            type='primary'
-            htmlType='submit'
-            className='login-form-button'
-            loading={loading}
-          >
+          <Button type='primary' htmlType='submit' className='login-form-button' loading={loading}>
             Log in
           </Button>
           Or <a href='#!'>register now!</a> <br />
@@ -105,6 +93,6 @@ function Login() {
         </Form.Item>
       </Form>
     </App>
-  );
+  )
 }
-export default Login;
+export default Login

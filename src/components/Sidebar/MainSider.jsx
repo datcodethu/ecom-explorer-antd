@@ -1,58 +1,51 @@
-import { Card, Checkbox } from "antd";
-import { useEffect, useState } from "react";
-import { getAllProductsCategories } from "../../services";
-import { FilterOutlined } from "@ant-design/icons";
-import "./Sidebar.scss";
-import { useNavigate } from "react-router-dom";
-import ShoppingImg from "../../assets/images/shopping.svg";
+import { Card, Checkbox } from 'antd'
+import { useEffect, useState } from 'react'
+import { getAllProductsCategories } from '../../services'
+import { FilterOutlined } from '@ant-design/icons'
+import './Sidebar.scss'
+import { useNavigate } from 'react-router-dom'
+import ShoppingImg from '../../assets/images/shopping.svg'
 
 function Sidebar() {
-  const [checkedList, setCheckedList] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const navigator = useNavigate();
+  const [checkedList, setCheckedList] = useState([])
+  const [categories, setCategories] = useState([])
+  const navigator = useNavigate()
 
   useEffect(() => {
     getAllProductsCategories().then((resp) => {
-      console.log(
-        "🚀 ~ file: index.js:8 ~ getAllProductsCategories ~ resp:",
-        resp
-      );
-      setCategories([...resp]);
-    });
-  }, []);
+      console.log('🚀 ~ file: index.js:8 ~ getAllProductsCategories ~ resp:', resp)
+      setCategories([...resp])
+    })
+  }, [])
 
   const onChange = (list) => {
-    console.log("🚀 ~ file: index.js:22 ~ onChange ~ list:", list);
-    setCheckedList(list);
-    navigator(`/products/categories/${list[0]}`);
-  };
+    console.log('🚀 ~ file: index.js:22 ~ onChange ~ list:', list)
+    setCheckedList(list)
+    navigator(`/products/categories/${list[0]}`)
+  }
 
   return (
     <>
       <Card
         title={
-          <div className="cardHeader">
+          <div className='cardHeader'>
             <FilterOutlined /> Products Categories
           </div>
         }
       >
         <Checkbox.Group
           options={categories.map((cat) => {
-            return { label: cat.name, value: cat.slug };
+            return { label: cat.name, value: cat.slug }
           })}
           value={checkedList}
           onChange={onChange}
-          className="categoriesGrp"
+          className='categoriesGrp'
         />
       </Card>
 
-      <img
-        src={ShoppingImg}
-        alt="Shopping with us"
-        style={{ width: "350px", maxWidth: "80%" }}
-      />
+      <img src={ShoppingImg} alt='Shopping with us' style={{ width: '350px', maxWidth: '80%' }} />
     </>
-  );
+  )
 }
 
-export default Sidebar;
+export default Sidebar

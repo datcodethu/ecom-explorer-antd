@@ -1,16 +1,15 @@
-@import "tailwindcss";
-@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 body {
   margin: 0;
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 @media (max-width: 992px) {

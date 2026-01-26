@@ -1,15 +1,15 @@
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Button, theme } from "antd";
-import Sider from "antd/es/layout/Sider";
-import React, { useState } from "react";
-import AuthMenu from "../Menu/AuthMenu";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+import { Button, theme } from 'antd'
+import Sider from 'antd/es/layout/Sider'
+import React, { useState } from 'react'
+import AuthMenu from '../Menu/AuthMenu'
 
 function AuthSider() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(false)
 
   const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+    token: { colorBgContainer }
+  } = theme.useToken()
 
   return (
     <Sider
@@ -18,24 +18,24 @@ function AuthSider() {
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
       style={{
-        background: colorBgContainer,
+        background: colorBgContainer
       }}
-      breakpoint={"lg"}
-      className="authSider"
+      breakpoint={'lg'}
+      className='authSider'
     >
       <Button
-        type="text"
+        type='text'
         icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         onClick={() => setCollapsed(!collapsed)}
         style={{
-          fontSize: "16px",
+          fontSize: '16px',
           width: 64,
-          height: 64,
+          height: 64
         }}
       />
       <AuthMenu />
     </Sider>
-  );
+  )
 }
 
-export default AuthSider;
+export default AuthSider

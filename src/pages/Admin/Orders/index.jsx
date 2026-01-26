@@ -1,30 +1,30 @@
-import { Table, Typography } from "antd";
-import React, { useEffect, useState } from "react";
-import { getAllCarts } from "../../../services";
+import { Table, Typography } from 'antd'
+import React, { useEffect, useState } from 'react'
+import { getAllCarts } from '../../../services'
 
 function OrdersTable() {
-  const [loading, setLoading] = useState(false);
-  const [dataSource, setDataSource] = useState([]);
+  const [loading, setLoading] = useState(false)
+  const [dataSource, setDataSource] = useState([])
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     getAllCarts().then((resp) => {
-      setDataSource(resp.carts);
+      setDataSource(resp.carts)
       setTimeout(() => {
-        setLoading(false);
-      }, 500);
-    });
-  }, []);
+        setLoading(false)
+      }, 500)
+    })
+  }, [])
 
   const columns = [
     {
-      title: "Id",
-      dataIndex: "id",
-      key: "id",
+      title: 'Id',
+      dataIndex: 'id',
+      key: 'id'
     },
     {
-      title: "Products",
-      dataIndex: "products",
-      key: "products",
+      title: 'Products',
+      dataIndex: 'products',
+      key: 'products',
       render: (products) => {
         return (
           <ul>
@@ -34,36 +34,36 @@ function OrdersTable() {
               </li>
             ))}
           </ul>
-        );
-      },
+        )
+      }
     },
     {
-      title: "Total Products",
-      dataIndex: "totalProducts",
-      key: "totalProducts",
-      sorter: (a, b) => a.totalProducts - b.totalProducts,
+      title: 'Total Products',
+      dataIndex: 'totalProducts',
+      key: 'totalProducts',
+      sorter: (a, b) => a.totalProducts - b.totalProducts
     },
     {
-      title: "Total Quantity",
-      dataIndex: "totalQuantity",
-      key: "totalQuantity",
-      sorter: (a, b) => a.totalQuantity - b.totalQuantity,
+      title: 'Total Quantity',
+      dataIndex: 'totalQuantity',
+      key: 'totalQuantity',
+      sorter: (a, b) => a.totalQuantity - b.totalQuantity
     },
     {
-      title: "Total",
-      dataIndex: "total",
-      key: "total",
+      title: 'Total',
+      dataIndex: 'total',
+      key: 'total',
       render: (total) => `$${total}`,
-      sorter: (a, b) => a.total - b.total,
+      sorter: (a, b) => a.total - b.total
     },
     {
-      title: "Discounted Total",
-      dataIndex: "discountedTotal",
-      key: "discountedTotal",
+      title: 'Discounted Total',
+      dataIndex: 'discountedTotal',
+      key: 'discountedTotal',
       render: (discountedTotal) => `$${discountedTotal}`,
-      sorter: (a, b) => a.discountedTotal - b.discountedTotal,
-    },
-  ];
+      sorter: (a, b) => a.discountedTotal - b.discountedTotal
+    }
+  ]
 
   return (
     <>
@@ -73,10 +73,10 @@ function OrdersTable() {
         columns={columns}
         rowKey={(data) => data.id}
         pagination={true}
-        style={{ width: "100%", overflow: "auto" }}
+        style={{ width: '100%', overflow: 'auto' }}
       />
     </>
-  );
+  )
 }
 function Orders() {
   return (
@@ -84,7 +84,7 @@ function Orders() {
       <Typography.Title level={3}>Orders</Typography.Title>
       <OrdersTable />
     </>
-  );
+  )
 }
 
-export default Orders;
+export default Orders

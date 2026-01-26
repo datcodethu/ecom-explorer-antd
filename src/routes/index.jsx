@@ -1,25 +1,25 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import PageContent from "../components/PageContent";
-import DefaultLayout from "../layouts/DefaultLayout";
-import AuthLayout from "../layouts/AuthLayout";
-import About from "../pages/About";
-import Category from "../pages/Category";
-import ErrorPage from "../pages/Error";
-import Home from "../pages/Home";
-import Cart from "../pages/Cart";
-import ThankYou from "../pages/Checkout";
-import Dashboard from "../pages/Admin/Dashboard";
-import Inventory from "../pages/Admin/Inventory";
-import Orders from "../pages/Admin/Orders";
-import Customers from "../pages/Admin/Customers";
-import Login from "../pages/Admin/Login";
-import Search from "../pages/Search";
-import Product from "../pages/Product";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import PageContent from '../components/PageContent'
+import DefaultLayout from '../layouts/DefaultLayout'
+import AuthLayout from '../layouts/AuthLayout'
+import About from '../pages/About'
+import Category from '../pages/Category'
+import ErrorPage from '../pages/Error'
+import Home from '../pages/Home'
+import Cart from '../pages/Cart'
+import ThankYou from '../pages/Checkout'
+import Dashboard from '../pages/Admin/Dashboard'
+import Inventory from '../pages/Admin/Inventory'
+import Orders from '../pages/Admin/Orders'
+import Customers from '../pages/Admin/Customers'
+import Login from '../pages/Admin/Login'
+import Search from '../pages/Search'
+import Product from '../pages/Product'
 
 function AppRoutes() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: '/',
       errorElement: (
         <DefaultLayout>
           <ErrorPage />
@@ -27,130 +27,130 @@ function AppRoutes() {
       ),
       children: [
         {
-          path: "products/:productId",
+          path: 'products/:productId',
           element: (
             <DefaultLayout>
               <PageContent>
                 <Product />
               </PageContent>
             </DefaultLayout>
-          ),
+          )
         },
         {
-          path: "products/categories/:categoryId",
+          path: 'products/categories/:categoryId',
           element: (
             <DefaultLayout>
               <PageContent>
                 <Category />
               </PageContent>
             </DefaultLayout>
-          ),
+          )
         },
         {
-          path: "products/search",
+          path: 'products/search',
           element: (
             <DefaultLayout>
               <PageContent>
                 <Search />
               </PageContent>
             </DefaultLayout>
-          ),
+          )
         },
         {
-          path: "about",
+          path: 'about',
           element: (
             <DefaultLayout>
               <PageContent>
                 <About />
               </PageContent>
             </DefaultLayout>
-          ),
+          )
         },
         {
-          path: "cart",
+          path: 'cart',
           element: (
             <DefaultLayout>
               <PageContent>
                 <Cart />
               </PageContent>
             </DefaultLayout>
-          ),
+          )
         },
         {
-          path: "thank-you",
+          path: 'thank-you',
           element: (
             <DefaultLayout>
               <PageContent>
                 <ThankYou />
               </PageContent>
             </DefaultLayout>
-          ),
+          )
         },
         {
-          path: "/login",
-          element: <Login />,
+          path: '/login',
+          element: <Login />
         },
         {
-          path: "/admin",
+          path: '/admin',
           element: <AuthLayout />,
           children: [
             {
-              path: "dash-board",
+              path: 'dash-board',
               element: (
                 <PageContent>
                   <Dashboard />
                 </PageContent>
-              ),
+              )
             },
             {
-              path: "inventory",
+              path: 'inventory',
               element: (
                 <PageContent>
                   <Inventory />
                 </PageContent>
-              ),
+              )
             },
             {
-              path: "customers",
+              path: 'customers',
               element: (
                 <PageContent>
                   <Customers />
                 </PageContent>
-              ),
+              )
             },
             {
-              path: "orders",
+              path: 'orders',
               element: (
                 <PageContent>
                   <Orders />
                 </PageContent>
-              ),
+              )
             },
             {
-              path: "",
+              path: '',
               element: (
                 <PageContent>
                   <Dashboard />
                 </PageContent>
-              ),
-            },
-          ],
+              )
+            }
+          ]
         },
         {
-          path: "",
+          path: '',
           element: (
             <DefaultLayout>
               <PageContent hasSider>
                 <Home />
               </PageContent>
             </DefaultLayout>
-          ),
-        },
-      ],
-    },
-  ]);
+          )
+        }
+      ]
+    }
+  ])
 
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />
 }
 
-export default AppRoutes;
+export default AppRoutes

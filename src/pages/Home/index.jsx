@@ -1,7 +1,7 @@
-import Products from "../../components/Products";
+import Products from '../../components/Products'
 
 function Home() {
-  return <Products />;
+  return <Products />
 }
 
-export default Home;
+export default Home
