@@ -10,7 +10,7 @@ const MainMenu = () => {
   const menuBtnRef = useRef(null)
 
   const onClick = (e) => {
-    console.log('click ', e)
+    // console.log('click ', e)
     setCurrent(e.key)
     setVisible(false)
     // navigator(`/${e.key}`);
@@ -95,7 +95,7 @@ const MainMenu = () => {
         mode={mode}
         items={menuItems}
         theme='light'
-        className='mainMenu'
+        className='!bg-transparent border-none'
       />
     ) : (
       <></>
@@ -108,7 +108,7 @@ const MainMenu = () => {
     <>
       <MenuShowing visible={!menuBtnVisible} menuItems={menuLgScreen} />
       <Button
-        className='menuBtn'
+        className='lg:!hidden'
         type='dashed'
         icon={<MenuOutlined />}
         onClick={() => setVisible(true)}

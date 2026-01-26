@@ -2,7 +2,6 @@ import { Card, Checkbox } from 'antd'
 import { useEffect, useState } from 'react'
 import { getAllProductsCategories } from '../../services'
 import { FilterOutlined } from '@ant-design/icons'
-import './Sidebar.scss'
 import { useNavigate } from 'react-router-dom'
 import ShoppingImg from '../../assets/images/shopping.svg'
 
@@ -13,13 +12,13 @@ function Sidebar() {
 
   useEffect(() => {
     getAllProductsCategories().then((resp) => {
-      console.log('🚀 ~ file: index.js:8 ~ getAllProductsCategories ~ resp:', resp)
+      // console.log('🚀 ~ file: index.js:8 ~ getAllProductsCategories ~ resp:', resp)
       setCategories([...resp])
     })
   }, [])
 
   const onChange = (list) => {
-    console.log('🚀 ~ file: index.js:22 ~ onChange ~ list:', list)
+    // console.log('🚀 ~ file: index.js:22 ~ onChange ~ list:', list)
     setCheckedList(list)
     navigator(`/products/categories/${list[0]}`)
   }
@@ -28,10 +27,11 @@ function Sidebar() {
     <>
       <Card
         title={
-          <div className='cardHeader'>
+          <div className='text-sm font-medium'>
             <FilterOutlined /> Products Categories
           </div>
         }
+        className='border-slate-100 dark:border-slate-800'
       >
         <Checkbox.Group
           options={categories.map((cat) => {
@@ -39,7 +39,7 @@ function Sidebar() {
           })}
           value={checkedList}
           onChange={onChange}
-          className='categoriesGrp'
+          className='w-full [&_label]:!flex [&_label]:py-1.5'
         />
       </Card>
 

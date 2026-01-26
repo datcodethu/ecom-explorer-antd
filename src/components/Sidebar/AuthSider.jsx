@@ -17,21 +17,15 @@ function AuthSider() {
       trigger={null}
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
-      style={{
-        background: colorBgContainer
-      }}
+      style={{ background: colorBgContainer }}
       breakpoint={'lg'}
-      className='authSider'
+      className='max-[992px]:!hidden transition-all duration-300'
     >
       <Button
         type='text'
         icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         onClick={() => setCollapsed(!collapsed)}
-        style={{
-          fontSize: '16px',
-          width: 64,
-          height: 64
-        }}
+        className='!text-base !w-16 !h-16'
       />
       <AuthMenu />
     </Sider>

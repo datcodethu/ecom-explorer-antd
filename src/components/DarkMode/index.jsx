@@ -16,7 +16,7 @@ function ToogleModeColor() {
             e.preventDefault()
             const newMode = colorMode === 'light' ? 'dark' : 'light'
             setColorMode(newMode)
-            console.log('color mode >>> ', newMode)
+            // console.log('color mode >>> ', newMode)
           }}
           alt='Switch between dark and light mode'
         >

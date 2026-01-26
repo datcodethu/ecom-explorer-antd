@@ -43,7 +43,7 @@ const AuthMenu = () => {
   ]
 
   const onClick = (e) => {
-    console.log('click ', e)
+    // console.log('click ', e)
     setCurrent(e.key)
     if (e.key === 'logout') {
       setTimeout(() => {
@@ -60,7 +60,7 @@ const AuthMenu = () => {
       selectedKeys={[current]}
       theme='light'
       onClick={onClick}
-      style={{ textAlign: 'left' }}
+      className='!text-left border-none !bg-transparent'
     />
   )
 }

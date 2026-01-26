@@ -1,4 +1,4 @@
-import { Button, Checkbox, Drawer, Form, Input, InputNumber, Table, Typography, message } from 'antd'
+import { Button, Checkbox, Drawer, Form, Input, InputNumber, Table, Typography, App } from 'antd'
 import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AppContext } from '../../context'
@@ -9,7 +9,7 @@ import { DeleteOutlined } from '@ant-design/icons'
 const CheckoutCartBtn = ({ onFinish }) => {
   const [checkoutDrawerOpen, setCheckoutDrawerOpen] = useState(false)
   const onConfirmOrder = (data) => {
-    console.log('🚀 ~ file: index.js:216 ~ onConfirmOrder ~ data:', data)
+    // console.log('🚀 ~ file: index.js:216 ~ onConfirmOrder ~ data:', data)
     setCheckoutDrawerOpen(false)
     onFinish()
   }
@@ -73,11 +73,12 @@ const CheckoutCartBtn = ({ onFinish }) => {
 
 function Cart() {
   const navigator = useNavigate()
+  const { message: messageApi } = App.useApp()
 
   const { cartItems, setCartItems } = useContext(AppContext)
 
   const handleCheckoutSubmit = () => {
-    message.success('Your order has been placed successfully.')
+    messageApi.success('Your order has been placed successfully.')
     setCartItems([])
     clearCart()
     navigator('/thank-you')
@@ -153,8 +154,8 @@ function Cart() {
                         min={0}
                         style={{ width: '65px' }}
                         onChange={(value) => {
-                          console.log('🚀 ~ file: index.js:160 ~ ShoppingCart ~ record:', record)
-                          console.log('🚀 ~ file: index.js:160 ~ ShoppingCart ~ value:', value)
+                          // console.log('🚀 ~ file: index.js:160 ~ ShoppingCart ~ record:', record)
+                          // console.log('🚀 ~ file: index.js:160 ~ ShoppingCart ~ value:', value)
 
                           const newCartItems = cartItems.map((item) => {
                             return item.id === record.id

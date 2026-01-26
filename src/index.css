@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+@layer base {
+  body {
+    @apply m-0 transition-colors duration-300 antialiased;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  }
+
+  code {
+    @apply font-mono;
+  }
+
+  header {
+    @apply max-[992px]:!px-[15px];
+  }
+
+  main {
+    @apply max-[992px]:!p-[0px_15px];
+  }
+
+  footer {
+    @apply max-[992px]:!p-[15px] max-[992px]:!h-[35px];
+  }
+
+  .ant-card-body {
+    @apply max-[992px]:!p-[5px];
+  }
+}

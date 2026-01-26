@@ -64,7 +64,7 @@ export function addCartItem(cartItems, addedItem) {
     ]
   }
   localStorage.setItem('order', JSON.stringify(newCartItems))
-  console.log('🚀 ~ file: index.js:41 ~ addCartItem ~ newCartItems:', newCartItems)
+  // console.log('🚀 ~ file: index.js:41 ~ addCartItem ~ newCartItems:', newCartItems)
   return newCartItems
 }
 

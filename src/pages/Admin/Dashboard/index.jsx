@@ -23,7 +23,7 @@ function DashboardChart() {
   useEffect(() => {
     async function fetchData() {
       const resp = await getAllCarts()
-      console.log('🚀 ~ file: index.js:43 ~ fetchData ~ carts:', resp)
+      // console.log('🚀 ~ file: index.js:43 ~ fetchData ~ carts:', resp)
 
       const dataChart = resp.carts.map((cart) => {
         return {
@@ -33,7 +33,7 @@ function DashboardChart() {
         }
       })
       setDataChart(dataChart)
-      console.log('🚀 ~ file: index.js:53 ~ fetchData ~ dataChart:', dataChart)
+      // console.log('🚀 ~ file: index.js:53 ~ fetchData ~ dataChart:', dataChart)
     }
     fetchData()
   }, [])

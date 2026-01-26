@@ -13,7 +13,7 @@ function SearchBox() {
   }
 
   const onFinish = ({ query }) => {
-    console.log('Success:', query)
+    // console.log('Success:', query)
     setPopovervisible(false)
     navigator(`/products/search?q=${query}`)
   }

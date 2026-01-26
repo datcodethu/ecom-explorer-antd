@@ -13,38 +13,6 @@ function AuthLayout(props) {
     token: { colorBgContainer }
   } = theme.useToken()
 
-  const headerStyle = {
-    overflow: 'hidden',
-    textAlign: 'center',
-    height: 64,
-    paddingInline: 50,
-    lineHeight: '64px',
-    background: colorBgContainer,
-    boxShadow: '1px 4px 4px #00000033',
-    width: '100%' /* Full width */
-  }
-
-  const bodyStyle = {
-    display: 'flex',
-    flex: 1,
-    lineHeight: 'auto',
-    margin: '20px 0'
-  }
-
-  const contentStyle = {
-    lineHeight: 'auto',
-    padding: '20px',
-    margin: '10px',
-    background: colorBgContainer
-  }
-
-  const footerStyle = {
-    textAlign: 'center',
-    height: '60px',
-    color: 'azure',
-    backgroundColor: 'black'
-  }
-
   const { user, setUser } = useContext(AppContext)
   const userInfo = localStorage.getItem('user')
 
@@ -58,7 +26,7 @@ function AuthLayout(props) {
   }, [user])
 
   if (!user || !userInfo) {
-    console.log('🚀 ~ file: AuthLayout.js:61 ~ AuthLayout ~ user:', user)
+    // console.log('🚀 ~ file: AuthLayout.js:61 ~ AuthLayout ~ user:', user)
 
     // user is not authenticated
     return <Navigate to='/login' />
@@ -68,13 +36,16 @@ function AuthLayout(props) {
     <App>
       {!!user ? (
         <>
-          <Header style={headerStyle}>
+          <Header className='overflow-hidden text-center h-16 !px-12 !leading-[64px] !bg-inherit shadow-[1px_4px_4px_rgba(0,0,0,0.2)] w-full'>
             <AuthHeader />
           </Header>
-          <Content style={bodyStyle}>
-            <Layout>
+          <Content className='flex flex-1 !leading-auto my-5'>
+            <Layout className='!bg-inherit'>
               <AuthSider />
-              <Content style={contentStyle}>
+              <Content
+                style={{ background: colorBgContainer }}
+                className='!leading-auto p-5 m-2.5 rounded-lg shadow-sm transition-colors duration-300'
+              >
                 <Outlet />
                 {props.children}
               </Content>
@@ -83,14 +54,14 @@ function AuthLayout(props) {
         </>
       ) : (
         <>
-          <Content style={bodyStyle}>
+          <Content className='flex flex-1 !leading-auto my-5'>
             <Outlet />
             {props.children}
           </Content>
         </>
       )}
 
-      <Footer style={footerStyle}>
+      <Footer className='text-center h-[60px] !text-emerald-50 !bg-black flex items-center justify-center'>
         <AppFooter />
       </Footer>
     </App>
