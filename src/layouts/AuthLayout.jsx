@@ -50,7 +50,7 @@ function AuthLayout(props) {
 
   useEffect(() => {
     if (!!userInfo) setUser(JSON.parse(userInfo));
-  }, []);
+  }, [setUser, userInfo]);
 
   useEffect(() => {
     if (!!user) localStorage.setItem("user", JSON.stringify(user));

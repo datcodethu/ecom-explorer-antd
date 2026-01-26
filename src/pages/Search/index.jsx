@@ -11,7 +11,7 @@ function Search() {
 
   useEffect(() => {
     if (!!q && q !== query) setQuery(q);
-  }, [q]);
+  }, [q, query]);
 
   return (
     <>

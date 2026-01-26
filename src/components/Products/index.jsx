@@ -5,7 +5,6 @@ import {
   getProductsByKeyword,
 } from "../../services";
 import { Button, Card, Image, List, Rate, Tabs, message } from "antd";
-import Meta from "antd/es/card/Meta";
 
 import { Typography, Badge } from "antd";
 import { AppContext } from "../../context";
@@ -17,6 +16,8 @@ import {
   UpOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+
+const { Meta } = Card;
 
 const AddToCardButton = ({ item }) => {
   const [isLoading, setIsLoading] = useState();
@@ -238,10 +239,10 @@ function Products({ category, query }) {
       {!!products && !!products.length ? (
         <>
           <Tabs
-            tabPosition="top"
+            tabPlacement='top'
             items={sortBy}
             onChange={onChange}
-            style={{ width: "100%", maxWidth: "80vw" }}
+            style={{ width: '100%', maxWidth: '80vw' }}
           />
           <ListProducts products={products} />
         </>

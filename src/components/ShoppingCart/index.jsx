@@ -19,7 +19,7 @@ const ShoppingCart = () => {
       );
       setCartItems([...cartHistory]);
     }
-  }, []);
+  }, [setCartItems]);
 
   useEffect(() => {
     if (!!cartItems) localStorage.setItem("order", JSON.stringify(cartItems));

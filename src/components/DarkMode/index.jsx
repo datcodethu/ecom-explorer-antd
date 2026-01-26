@@ -1,5 +1,5 @@
-import { ReactComponent as LightToogleIco } from "../../assets/images/lightToogle.svg";
-import { ReactComponent as DarkToogleIco } from "../../assets/images/darkToogle.svg";
+import LightToogleIco from "../../assets/images/lightToogle.svg?react";
+import DarkToogleIco from "../../assets/images/darkToogle.svg?react";
 import { useContext } from "react";
 import { AppContext } from "../../context";
 
@@ -10,9 +10,10 @@ function ToogleModeColor() {
     <>
       <div className="ms-1 colorModeToogle">
         <a
-          href="#"
+          href="#!"
           className="colorModeToogleBtn"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             const newMode = colorMode === "light" ? "dark" : "light";
             setColorMode(newMode);
             console.log("color mode >>> ", newMode);

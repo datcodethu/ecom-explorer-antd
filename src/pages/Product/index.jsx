@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getSingleProduct } from "../../services";
 import {
@@ -45,7 +45,7 @@ function Product() {
         setFetchingData(false);
       }, 1000);
     });
-  }, []);
+  }, [key]);
 
   const handleAddToCart = () => {
     setLoadingAddToCart(true);

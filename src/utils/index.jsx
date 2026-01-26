@@ -97,13 +97,21 @@ export default function useOnScreen(ref) {
       new IntersectionObserver(([entry]) =>
         setIntersecting(entry.isIntersecting)
       ),
-    [ref]
+    []
   );
 
   useEffect(() => {
-    observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+      observer.disconnect();
+    };
+  }, [observer, ref]);
 
   return isIntersecting;
 }

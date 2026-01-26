@@ -1,7 +1,6 @@
 import { Card, Checkbox } from "antd";
 import { useEffect, useState } from "react";
 import { getAllProductsCategories } from "../../services";
-import { makeUpLabel } from "../../utils";
 import { FilterOutlined } from "@ant-design/icons";
 import "./Sidebar.scss";
 import { useNavigate } from "react-router-dom";
