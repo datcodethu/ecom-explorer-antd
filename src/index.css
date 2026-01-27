@@ -3,9 +3,9 @@
 
 @theme {
   --color-primary: #1c1917;
-  --color-accent: #ca8a04;
-  --color-stone-950: #0c0a09;
-  --color-stone-50: #fafaf9;
+  --color-accent: #0ea5e9;
+  --color-sky-950: #030712;
+  --color-sky-50: #fafaf9;
   
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -15,16 +15,16 @@
 
 @layer base {
   :root {
-    --bg-main: var(--color-stone-50);
-    --text-main: var(--color-stone-950);
+    --bg-main: var(--color-sky-50);
+    --text-main: var(--color-sky-950);
     --border-main: rgba(28, 25, 23, 0.1);
     --glass-bg: rgba(255, 255, 255, 0.7);
     --glass-border: rgba(255, 255, 255, 0.4);
   }
 
   .dark {
-    --bg-main: var(--color-stone-950);
-    --text-main: var(--color-stone-50);
+    --bg-main: var(--color-sky-950);
+    --text-main: var(--color-sky-50);
     --border-main: rgba(250, 250, 249, 0.1);
     --glass-bg: rgba(12, 10, 9, 0.7);
     --glass-border: rgba(250, 250, 249, 0.1);

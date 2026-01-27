@@ -82,7 +82,7 @@ function Dashboard() {
       }, 0)
 
       setOrders(totalQuantity)
-      setRevenue(discountedTotal)
+      setRevenue(discountedTotal.toFixed(2))
     })
 
     getAllProducts().then((res) => {

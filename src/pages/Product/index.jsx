@@ -64,18 +64,20 @@ function Product() {
           <Col xs={24} md={12}>
             <div className='flex flex-col gap-6 sticky top-24'>
               <div className='bg-white rounded-3xl overflow-hidden aspect-square flex items-center justify-center p-8 shadow-sm'>
-                <Image src={product.thumbnail} className='max-h-full object-contain hover:scale-105 transition-transform duration-500' />
+                <Image
+                  src={product.thumbnail}
+                  className='max-h-full object-contain hover:scale-105 transition-transform duration-500'
+                />
               </div>
               <div className='flex justify-center'>
                 <Image.PreviewGroup>
                   <Space size='middle' wrap justify='center'>
                     {product.images.map((img, index) => (
-                      <div key={index} className='w-16 h-16 rounded-xl overflow-hidden border border-stone-100 hover:border-accent cursor-pointer transition-colors bg-white p-1'>
-                        <Image
-                          src={img}
-                          className='w-full h-full object-contain'
-                          preview={true}
-                        />
+                      <div
+                        key={index}
+                        className='w-16 h-16 rounded-xl overflow-hidden border border-stone-100 hover:border-accent cursor-pointer transition-colors bg-white p-1'
+                      >
+                        <Image src={img} className='w-full h-full object-contain' preview={true} />
                       </div>
                     ))}
                   </Space>
@@ -91,7 +93,10 @@ function Product() {
                     {product.brand || 'Luxury Collection'}
                   </span>
                   <span className='w-1 h-1 rounded-full bg-stone-300'></span>
-                  <Link to={`/products/categories/${product.category}`} className='text-[10px] font-bold uppercase tracking-widest text-accent hover:underline'>
+                  <Link
+                    to={`/products/categories/${product.category}`}
+                    className='text-[10px] font-bold uppercase tracking-widest text-accent hover:underline'
+                  >
                     {makeUpLabel(product.category)}
                   </Link>
                 </div>
@@ -103,14 +108,12 @@ function Product() {
                     <Rate value={product.rating} allowHalf disabled className='!text-xs !text-accent' />
                     <span className='text-xs font-bold'>{product.rating}</span>
                   </div>
-                  <span className='text-xs text-stone-400 font-medium'>
-                    {product.stock} items remaining
-                  </span>
+                  <span className='text-xs text-stone-400 font-medium'>{product.stock} items remaining</span>
                 </div>
               </div>
 
               <div className='flex items-baseline gap-4'>
-                <span className='text-4xl font-bold text-stone-900'>
+                <span className='text-4xl font-bold text-stone-900 dark:text-stone-100'>
                   ${parseFloat((product.price * (100 - product.discountPercentage)) / 100).toFixed(0)}
                 </span>
                 <div className='flex items-center gap-2'>
@@ -140,7 +143,11 @@ function Product() {
                       onClick={() => setCartQty(cartQty > 1 ? cartQty - 1 : 1)}
                       className='hover:!bg-white shadow-none'
                     />
-                    <Input value={cartQty} readOnly className='!w-12 !border-none !bg-transparent text-center !font-bold shadow-none' />
+                    <Input
+                      value={cartQty}
+                      readOnly
+                      className='!w-12 !border-none !bg-transparent text-center !font-bold shadow-none'
+                    />
                     <Button
                       shape='circle'
                       type='text'
@@ -156,7 +163,7 @@ function Product() {
                     type='primary'
                     onClick={handleAddToCart}
                     loading={loadingAddToCart}
-                    className='!h-14 !bg-stone-900 hover:!bg-stone-800 !border-none !rounded-xl !text-sm !font-bold !uppercase !tracking-widest transition-all'
+                    className='!h-14 !bg-stone-900 dark:!bg-stone-100 dark:!text-stone-900 hover:!opacity-80 !border-none !rounded-xl !text-sm !font-bold !uppercase !tracking-widest transition-all'
                   >
                     Add to bag
                   </Button>
@@ -164,7 +171,7 @@ function Product() {
                     type='default'
                     onClick={handleCheckout}
                     loading={loadingCheckOut}
-                    className='!h-14 !border-2 !border-stone-900 !text-stone-900 hover:!border-stone-700 hover:!text-stone-700 !rounded-xl !text-sm !font-bold !uppercase !tracking-widest transition-all'
+                    className='!h-14 !border-2 !border-stone-900 dark:!border-stone-100 !text-stone-900 dark:!text-stone-100 hover:!opacity-70 !rounded-xl !text-sm !font-bold !uppercase !tracking-widest transition-all bg-transparent'
                   >
                     Buy it now
                   </Button>
@@ -173,9 +180,15 @@ function Product() {
 
               <div className='flex flex-col gap-4 mt-4'>
                 <div className='flex items-center gap-4 text-xs font-medium text-stone-400'>
-                  <span className='flex items-center gap-2'><span className='text-accent'>✓</span> Free Shipping</span>
-                  <span className='flex items-center gap-2'><span className='text-accent'>✓</span> 30-Day Returns</span>
-                  <span className='flex items-center gap-2'><span className='text-accent'>✓</span> Secure Checkout</span>
+                  <span className='flex items-center gap-2'>
+                    <span className='text-accent'>✓</span> Free Shipping
+                  </span>
+                  <span className='flex items-center gap-2'>
+                    <span className='text-accent'>✓</span> 30-Day Returns
+                  </span>
+                  <span className='flex items-center gap-2'>
+                    <span className='text-accent'>✓</span> Secure Checkout
+                  </span>
                 </div>
               </div>
             </div>

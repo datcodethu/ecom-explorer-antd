@@ -13,8 +13,8 @@ function AppHeader() {
       </div>
       <div className='flex items-center justify-center flex-grow text-center h-full'>
         <Link to='/' className='hover:opacity-80 transition-opacity'>
-          <Typography.Title level={2} className='!m-0 !text-2xl whitespace-nowrap'>
-            Toni Store 🛍
+          <Typography.Title level={2} className='!m-0 !text-2xl whitespace-nowrap !font-heading !tracking-wider'>
+            Toni Store 🛍️
           </Typography.Title>
         </Link>
       </div>

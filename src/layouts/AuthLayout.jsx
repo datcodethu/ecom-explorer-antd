@@ -33,7 +33,7 @@ function AuthLayout(props) {
   }
 
   return (
-    <App>
+    <>
       {!!user ? (
         <>
           <Header className='overflow-hidden text-center h-16 !px-12 !leading-[64px] !bg-inherit shadow-[1px_4px_4px_rgba(0,0,0,0.2)] w-full'>
@@ -64,7 +64,7 @@ function AuthLayout(props) {
       <Footer className='text-center h-[60px] !text-emerald-50 !bg-black flex items-center justify-center'>
         <AppFooter />
       </Footer>
-    </App>
+    </>
   )
 }
 

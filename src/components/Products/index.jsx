@@ -16,12 +16,13 @@ const AddToCardButton = ({ item }) => {
 
   const { cartItems, setCartItems } = useContext(AppContext)
 
-  const onClick = () => {
+  const onClick = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
     setIsLoading(true)
-    messageApi.success(`${item.title} has been added to cart 👌`)
+    messageApi.success(`${item.title} added to bag 👌`)
     let newCartItems = addCartItem(cartItems, item)
     setCartItems(newCartItems)
-    // console.log('🚀 ~ file: index.js:24 ~ CartHolder ~ cartItems:', newCartItems)
 
     setTimeout(() => {
       setIsLoading(false)
@@ -29,8 +30,13 @@ const AddToCardButton = ({ item }) => {
   }
 
   return (
-    <Button type='link' onClick={onClick} loading={isLoading}>
-      Add to card
+    <Button
+      type='primary'
+      onClick={onClick}
+      loading={isLoading}
+      className='!w-full !bg-stone-900 dark:!bg-stone-100 dark:!text-stone-900 hover:!opacity-80 !border-none !rounded-xl !h-10 !text-[10px] !font-black !uppercase !tracking-[0.2em] !shadow-lg active:!scale-95 transition-all'
+    >
+      Add to bag
     </Button>
   )
 }
@@ -70,84 +76,92 @@ const ListProducts = ({ products }) => {
 
   return (
     <div className='w-full'>
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8'>
+      <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-12 mb-12'>
         {currentProducts.map((product) => (
-          <Link to={`/products/${hashidsEncode(product.id)}`} className='hover:text-blue-500'>
-            <div key={product.id} className='m-2 transition-all duration-300 hover:-translate-y-2 h-full'>
-              <Badge.Ribbon
-                text={`${parseFloat(product.discountPercentage).toFixed()}% OFF`}
-                color='volcano'
-                placement='start'
-              >
-                <Card
-                  hoverable
-                  className='w-full h-auto flex flex-col border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md'
-                  cover={
+          <div key={product.id} className='group relative h-full'>
+            <Badge.Ribbon
+              text={`${parseFloat(product.discountPercentage).toFixed()}% OFF`}
+              color='#0ea5e9'
+              className='!font-bold !text-xs uppercase tracking-tighter'
+            >
+              <Card
+                className='h-full flex flex-col border-none shadow-none bg-transparent p-2'
+                cover={
+                  <Link
+                    to={`/products/${hashidsEncode(product.id)}`}
+                    className='block overflow-hidden rounded-2xl bg-white'
+                  >
                     <Image
                       alt={product.title}
-                      className='w-full h-auto aspect-4/3 flex items-center justify-center p-2 object-contain'
+                      className='w-full h-auto aspect-[16/9] object-contain p-4 group-hover:scale-105 transition-transform duration-500'
                       src={`${product.thumbnail}`}
                       loading='lazy'
                       preview={false}
                     />
-                  }
-                  actions={[
-                    <div key='rating' className='flex justify-center py-2 border-t dark:border-slate-800'>
-                      <Rate value={product.rating} allowHalf disabled className='text-xs' />
-                    </div>,
-                    <div key='add-to-cart' className='border-t dark:border-slate-800'>
-                      <AddToCardButton item={product} />
+                  </Link>
+                }
+              >
+                <div className='flex flex-col gap-3'>
+                  <div className='flex justify-between items-start gap-2'>
+                    <Link to={`/products/${hashidsEncode(product.id)}`} className='flex-1'>
+                      <Typography.Title
+                        level={5}
+                        className='!m-0 !text-lg !font-semibold !leading-tight group-hover:text-accent transition-colors truncate'
+                        ellipsis={true}
+                        rows={1}
+                      >
+                        {product.title}
+                      </Typography.Title>
+                    </Link>
+                  </div>
+
+                  <div className='flex justify-between items-center'>
+                    <div className='flex items-center gap-2'>
+                      <Rate value={product.rating} allowHalf disabled className='!text-[10px] !text-accent' />
+                      <span className='text-[10px] font-medium opacity-40 uppercase tracking-widest'>
+                        ({product.rating})
+                      </span>
                     </div>
-                  ]}
-                >
-                  <Meta
-                    title={
-                      <div className='flex flex-col gap-1'>
-                        <Typography.Title level={5} className='!m-0' ellipsis={{ rows: 1, expandable: false }}>
-                          {product.title}
-                        </Typography.Title>
-                        <div className='flex items-center justify-center gap-2'>
-                          <span className='text-lg font-bold text-slate-900 dark:text-white'>
-                            Price: ${parseFloat((product.price * (100 - product.discountPercentage)) / 100).toFixed(0)}
-                          </span>
-                          <Typography.Text delete type='danger' className='text-sm opacity-60'>
-                            ${product.price}
-                          </Typography.Text>
-                        </div>
-                      </div>
-                    }
-                    description={
-                      <Typography.Paragraph className='!mb-0' ellipsis={{ rows: 2, expandable: false }}>
-                        {product.description}
-                      </Typography.Paragraph>
-                    }
-                  />
-                </Card>
-              </Badge.Ribbon>
-            </div>
-          </Link>
+
+                    <div className='flex items-baseline gap-2'>
+                      <span className='text-xl font-bold text-stone-900 dark:text-stone-100'>
+                        ${parseFloat((product.price * (100 - product.discountPercentage)) / 100).toFixed(0)}
+                      </span>
+                      <Typography.Text delete className='text-sm opacity-40 font-medium'>
+                        ${product.price}
+                      </Typography.Text>
+                    </div>
+                  </div>
+
+                  <div className='mt-2 grid grid-cols-1 gap-2'>
+                    <AddToCardButton item={product} />
+                  </div>
+                </div>
+              </Card>
+            </Badge.Ribbon>
+          </div>
         ))}
       </div>
 
       {totalPages > 1 && (
-        <div className='flex justify-center items-center gap-2 mt-8 mb-4'>
+        <div className='flex justify-center items-center gap-3 mt-12 mb-8'>
           <button
             disabled={currentPage === 1}
             onClick={() => paginate(currentPage - 1)}
-            className='cursor-pointer flex items-center gap-1 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all'
+            className='cursor-pointer flex items-center justify-center p-3 rounded-full border border-stone-200 dark:border-stone-800 hover:bg-stone-100 dark:hover:bg-stone-900 disabled:opacity-30 disabled:cursor-not-allowed transition-all'
           >
-            Previous
+            ←
           </button>
 
-          <div className='flex gap-1'>
+          <div className='flex gap-2 font-medium'>
             {[...Array(totalPages)].map((_, i) => (
               <button
                 key={i + 1}
                 onClick={() => paginate(i + 1)}
-                className={`cursor-pointer w-10 h-10 flex items-center justify-center rounded-lg border transition-all ${
+                className={`w-10 h-10 flex items-center justify-center rounded-lg transition-all cursor-pointer ${
                   currentPage === i + 1
-                    ? 'bg-blue-600 border-blue-600 !text-white hover:bg-blue-700 font-bold shadow-lg shadow-blue-500/30'
-                    : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-blue-600 dark:text-slate-300 hover:border-blue-400 dark:hover:border-blue-500'
+                    ? 'bg-stone-900 dark:bg-stone-100 text-stone-100 dark:text-stone-900 shadow-xl scale-110'
+                    : 'text-stone-500 hover:bg-stone-100 dark:hover:bg-stone-900'
                 }`}
               >
                 {i + 1}
@@ -158,9 +172,9 @@ const ListProducts = ({ products }) => {
           <button
             disabled={currentPage === totalPages}
             onClick={() => paginate(currentPage + 1)}
-            className='cursor-pointer flex items-center gap-1 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all'
+            className='cursor-pointer flex items-center justify-center p-3 rounded-full border border-stone-200 dark:border-stone-800 hover:bg-stone-100 dark:hover:bg-stone-900 disabled:opacity-30 disabled:cursor-not-allowed transition-all'
           >
-            Next
+            →
           </button>
         </div>
       )}
@@ -172,23 +186,23 @@ function Products({ category, query }) {
   const [products, setProducts] = useState([])
 
   useEffect(() => {
-      if (!!query) {
-        // console.log('🚀 ~ file: index.js:143 ~ useEffect ~ query:', query)
-        getProductsByKeyword(query).then((resp) => {
-          // console.log('🚀 ~ file: index.js:38 ~ getProductsByKeyword ~ resp:', resp.products)
-          setProducts(resp.products)
-        })
-      } else if (!!category) {
-        getProductsByCategory(category).then((resp) => {
-          // console.log('🚀 ~ file: index.js:38 ~ getProductsByCategory ~ resp:', resp.products)
-          setProducts(resp.products)
-        })
-      } else {
-        getAllProducts().then((resp) => {
-          // console.log('🚀 ~ file: index.js:8 ~ getAllProducts ~ resp:', resp.products)
-          setProducts(resp.products)
-        })
-      }
+    if (!!query) {
+      // console.log('🚀 ~ file: index.js:143 ~ useEffect ~ query:', query)
+      getProductsByKeyword(query).then((resp) => {
+        // console.log('🚀 ~ file: index.js:38 ~ getProductsByKeyword ~ resp:', resp.products)
+        setProducts(resp.products)
+      })
+    } else if (!!category) {
+      getProductsByCategory(category).then((resp) => {
+        // console.log('🚀 ~ file: index.js:38 ~ getProductsByCategory ~ resp:', resp.products)
+        setProducts(resp.products)
+      })
+    } else {
+      getAllProducts().then((resp) => {
+        // console.log('🚀 ~ file: index.js:8 ~ getAllProducts ~ resp:', resp.products)
+        setProducts(resp.products)
+      })
+    }
   }, [category, query])
 
   const sortProductsBy = (sortedBy) => {
