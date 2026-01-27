@@ -88,7 +88,7 @@ function Product() {
           </Col>
           <Col flex={3} sm={24} md={14}>
             <div className='flex flex-col gap-4'>
-              <Typography.Title level={3} className='!mb-0'>
+              <Typography.Title level={3} className='!mb-0 !text-2xl !font-bold'>
                 {product.title}
               </Typography.Title>
               <div className='px-4'>
@@ -101,9 +101,9 @@ function Product() {
               </div>
               <div className='px-4 flex items-center justify-start gap-6'>
                 <span className='text-3xl font-bold text-slate-900 dark:text-white'>
-                  ${parseFloat((product.price * (100 - product.discountPercentage)) / 100).toFixed(0)}
+                  Price: ${parseFloat((product.price * (100 - product.discountPercentage)) / 100).toFixed(0)}
                 </span>
-                <div className='flex flex-col'>
+                <div className='flex flex-row gap-2 items-center'>
                   <Typography.Text className='bg-red-600 text-yellow-300 px-1.5 py-0.5 rounded text-sm font-bold w-fit'>
                     {parseFloat(product.discountPercentage).toFixed(0)}% OFF
                   </Typography.Text>
@@ -112,12 +112,12 @@ function Product() {
                   </Typography.Text>
                 </div>
               </div>
-              <div className='flex flex-col w-full max-w-md'>
-                <div className='flex items-center p-4 border-b border-slate-50 dark:border-slate-800/50'>
+              <div className='flex flex-col w-full max-w-md gap-2 items-start'>
+                <div className='flex p-4 border-b border-slate-50 dark:border-slate-800/50'>
                   <span className='w-1/4 min-w-[85px] text-slate-500 font-medium'>Brand</span>
-                  <span className='flex-1 font-semibold'>{product.brand}</span>
+                  <span className='flex-1 font-semibold'>{product.brand || 'Unknown'}</span>
                 </div>
-                <div className='flex items-center p-4 border-b border-slate-50 dark:border-slate-800/50'>
+                <div className='flex p-4 border-b border-slate-50 dark:border-slate-800/50'>
                   <span className='w-1/4 min-w-[85px] text-slate-500 font-medium'>Category</span>
                   <span className='flex-1'>
                     <Link

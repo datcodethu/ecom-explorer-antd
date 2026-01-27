@@ -42,8 +42,8 @@ function DefaultLayout(props) {
         <Header className='overflow-hidden text-center h-16 !px-12 !leading-[64px] !bg-inherit shadow-[1px_4px_4px_rgba(255,255,255,0.2)] fixed top-0 w-full z-10'>
           <AppHeader />
         </Header>
-        <Content className='flex flex-col flex-1 text-center min-h-[120px] !leading-auto pt-[60px] px-12 pb-0'>
-          <Breadcrumb className='my-4 px-[15px]' items={breadCrumbs}></Breadcrumb>
+        <Content className='flex flex-col flex-1 text-center min-h-[120px] !leading-auto pt-[64px] px-12 pb-0'>
+          <Breadcrumb className='!my-4 px-[15px]' items={breadCrumbs}></Breadcrumb>
           <Layout className='py-3 !bg-inherit'>
             <Outlet />
             {props.children}

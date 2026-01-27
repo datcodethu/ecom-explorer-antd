@@ -1,9 +1,9 @@
 import { Avatar, Badge, Button, Popover, Typography } from 'antd'
-import { DeleteOutlined, ShoppingCartOutlined } from '@ant-design/icons'
 import { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../../context'
 import { removeCartItem } from '../../utils'
 import { useNavigate } from 'react-router-dom'
+import { CiCircleRemove, CiShoppingCart } from 'react-icons/ci'
 
 const ShoppingCart = () => {
   const { cartItems, setCartItems } = useContext(AppContext)
@@ -64,7 +64,7 @@ const ShoppingCart = () => {
                     onClick={() => handleRemoveCartItem(item)}
                     title='Remove item'
                   >
-                    <DeleteOutlined />
+                    <CiCircleRemove className='size-6' />
                   </button>
                 </div>
               ))}
@@ -106,7 +106,7 @@ const ShoppingCart = () => {
         onOpenChange={handlePopoverChange}
       >
         <Badge count={cartItems.length || 0}>
-          <ShoppingCartOutlined className='shoppingCardIcon' />
+          <CiShoppingCart className='size-6' />
         </Badge>
       </Popover>
     </>

@@ -1,7 +1,8 @@
-import { SearchOutlined } from '@ant-design/icons'
+
 import { Badge, Button, Form, Input, Popover } from 'antd'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { CiSearch } from 'react-icons/ci'
 
 function SearchBox() {
   const [form] = Form.useForm()
@@ -54,7 +55,7 @@ function SearchBox() {
       }}
     >
       <Badge dot>
-        <SearchOutlined className='searchIcon' />
+        <CiSearch className='size-6' />
       </Badge>
     </Popover>
   )

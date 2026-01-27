@@ -9,7 +9,7 @@ function Category(props) {
 
   return (
     <>
-      <h2>Category {makeUpLabel(key)}</h2>
+      <h2 className='text-2xl font-bold my-4'>Category {makeUpLabel(key)}</h2>
       <div>
         <Products category={key} />
       </div>

@@ -1,5 +1,4 @@
-import LightToogleIco from '../../assets/images/lightToogle.svg?react'
-import DarkToogleIco from '../../assets/images/darkToogle.svg?react'
+import { CiLight, CiDark } from 'react-icons/ci'
 import { useContext } from 'react'
 import { AppContext } from '../../context'
 
@@ -8,7 +7,7 @@ function ToogleModeColor() {
 
   return (
     <>
-      <div className='ms-1 colorModeToogle'>
+      <div className='colorModeToogle'>
         <a
           href='#!'
           className='colorModeToogleBtn'
@@ -20,7 +19,7 @@ function ToogleModeColor() {
           }}
           alt='Switch between dark and light mode'
         >
-          {colorMode === 'dark' ? <LightToogleIco /> : <DarkToogleIco />}
+          {colorMode === 'dark' ? <CiLight className='size-6' /> : <CiDark className='size-6' />}
         </a>
       </div>
     </>

@@ -24,7 +24,7 @@ function Sidebar() {
   }
 
   return (
-    <>
+    <div className='flex flex-col gap-4'>
       <Card
         title={
           <div className='text-sm font-medium'>
@@ -43,8 +43,8 @@ function Sidebar() {
         />
       </Card>
 
-      <img src={ShoppingImg} alt='Shopping with us' style={{ width: '350px', maxWidth: '80%' }} />
-    </>
+      <img src={ShoppingImg} alt='Shopping with us' className='w-[350px] max-w-[80%] mx-auto' />
+    </div>
   )
 }
 

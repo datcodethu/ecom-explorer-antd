@@ -26,7 +26,7 @@ function PageContent(props) {
         </Sider>
       )}
 
-      <Content className='leading-normal px-5 max-w-full w-full max-[992px]:px-0 transition-all duration-300'>
+      <Content className='leading-normal px-5 max-w-full w-full max-w-7xl mx-auto transition-all duration-300'>
         {children}
       </Content>
     </div>

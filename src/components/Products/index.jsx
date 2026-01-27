@@ -72,58 +72,60 @@ const ListProducts = ({ products }) => {
     <div className='w-full'>
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8'>
         {currentProducts.map((product) => (
-          <div key={product.id} className='m-2 transition-all duration-300 hover:-translate-y-2 h-full'>
-            <Badge.Ribbon
-              text={`${parseFloat(product.discountPercentage).toFixed()}% OFF`}
-              color='volcano'
-              placement='start'
-            >
-              <Card
-                hoverable
-                className='w-full h-auto flex flex-col border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md'
-                cover={
-                  <Image
-                    alt={product.title}
-                    className='w-full h-auto aspect-4/3 flex items-center justify-center p-2 object-contain'
-                    src={`${product.thumbnail}`}
-                  />
-                }
-                actions={[
-                  <div key='rating' className='flex justify-center py-2 border-t dark:border-slate-800'>
-                    <Rate value={product.rating} allowHalf disabled className='text-xs' />
-                  </div>,
-                  <div key='add-to-cart' className='border-t dark:border-slate-800'>
-                    <AddToCardButton item={product} />
-                  </div>
-                ]}
+          <Link to={`/products/${hashidsEncode(product.id)}`} className='hover:text-blue-500'>
+            <div key={product.id} className='m-2 transition-all duration-300 hover:-translate-y-2 h-full'>
+              <Badge.Ribbon
+                text={`${parseFloat(product.discountPercentage).toFixed()}% OFF`}
+                color='volcano'
+                placement='start'
               >
-                <Meta
-                  title={
-                    <div className='flex flex-col gap-1'>
-                      <Typography.Title level={5} className='!m-0 line-clamp-1'>
-                        <Link to={`/products/${hashidsEncode(product.id)}`} className='hover:text-blue-500'>
-                          {product.title}
-                        </Link>
-                      </Typography.Title>
-                      <div className='flex items-center gap-2'>
-                        <span className='text-lg font-bold text-slate-900 dark:text-white'>
-                          ${parseFloat((product.price * (100 - product.discountPercentage)) / 100).toFixed(0)}
-                        </span>
-                        <Typography.Text delete type='danger' className='text-sm opacity-60'>
-                          ${product.price}
-                        </Typography.Text>
-                      </div>
+                <Card
+                  hoverable
+                  className='w-full h-auto flex flex-col border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md'
+                  cover={
+                    <Image
+                      alt={product.title}
+                      className='w-full h-auto aspect-4/3 flex items-center justify-center p-2 object-contain'
+                      src={`${product.thumbnail}`}
+                      loading='lazy'
+                      preview={false}
+                    />
+                  }
+                  actions={[
+                    <div key='rating' className='flex justify-center py-2 border-t dark:border-slate-800'>
+                      <Rate value={product.rating} allowHalf disabled className='text-xs' />
+                    </div>,
+                    <div key='add-to-cart' className='border-t dark:border-slate-800'>
+                      <AddToCardButton item={product} />
                     </div>
-                  }
-                  description={
-                    <Typography.Paragraph className='!mb-0' ellipsis={{ rows: 2, expandable: false }}>
-                      {product.description}
-                    </Typography.Paragraph>
-                  }
-                />
-              </Card>
-            </Badge.Ribbon>
-          </div>
+                  ]}
+                >
+                  <Meta
+                    title={
+                      <div className='flex flex-col gap-1'>
+                        <Typography.Title level={5} className='!m-0' ellipsis={{ rows: 1, expandable: false }}>
+                          {product.title}
+                        </Typography.Title>
+                        <div className='flex items-center justify-center gap-2'>
+                          <span className='text-lg font-bold text-slate-900 dark:text-white'>
+                            Price: ${parseFloat((product.price * (100 - product.discountPercentage)) / 100).toFixed(0)}
+                          </span>
+                          <Typography.Text delete type='danger' className='text-sm opacity-60'>
+                            ${product.price}
+                          </Typography.Text>
+                        </div>
+                      </div>
+                    }
+                    description={
+                      <Typography.Paragraph className='!mb-0' ellipsis={{ rows: 2, expandable: false }}>
+                        {product.description}
+                      </Typography.Paragraph>
+                    }
+                  />
+                </Card>
+              </Badge.Ribbon>
+            </div>
+          </Link>
         ))}
       </div>
 
