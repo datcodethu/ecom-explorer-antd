@@ -40,43 +40,43 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### App homepage
 
-![Screenshot-1](/public/Screenshot_1.jpg?raw=true "App homepage")
+![Screenshot-1](/public/Screenshot_1.jpg?raw=true 'App homepage')
 
 ### Cart view
 
-![Screenshot-3](/public/Screenshot_3.jpg?raw=true "Cart view")
+![Screenshot-3](/public/Screenshot_3.jpg?raw=true 'Cart view')
 
 ### Product view
 
-![Screenshot-2](/public/Screenshot_2.jpg?raw=true "Product view")
+![Screenshot-2](/public/Screenshot_2.jpg?raw=true 'Product view')
 
 ### Search products by keywords
 
-![Screenshot-4](/public/Screenshot_4.jpg?raw=true "Search products view")
+![Screenshot-4](/public/Screenshot_4.jpg?raw=true 'Search products view')
 
 ### Checkout view
 
-![Screenshot-5](/public/Screenshot_5.jpg?raw=true "Checkout view")
+![Screenshot-5](/public/Screenshot_5.jpg?raw=true 'Checkout view')
 
 ### Confirm an order
 
-![Screenshot-6](/public/Screenshot_6.jpg?raw=true "Order confirming view")
+![Screenshot-6](/public/Screenshot_6.jpg?raw=true 'Order confirming view')
 
 ### After checkout
 
-![Screenshot-7](/public/Screenshot_7_After_checkout.jpg?raw=true "After checkout view")
+![Screenshot-7](/public/Screenshot_7_After_checkout.jpg?raw=true 'After checkout view')
 
 ### Mobile view
 
-![Screenshot-8](/public/Screenshot_8_MobileDisp.jpg?raw=true "Mobile view")
+![Screenshot-8](/public/Screenshot_8_MobileDisp.jpg?raw=true 'Mobile view')
 
 ### Login view
 
-![Screenshot-8](/public/Screenshot_9_Login.jpg?raw=true "Login view")
+![Screenshot-8](/public/Screenshot_9_Login.jpg?raw=true 'Login view')
 
 ### Dashboard view
 
-![Screenshot-8](/public/Screenshot_10_Dashboard.jpg?raw=true "Dashboard view")
+![Screenshot-8](/public/Screenshot_10_Dashboard.jpg?raw=true 'Dashboard view')
 
 ## ✨ Features
 
