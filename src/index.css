@@ -1,10 +1,45 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap');
 @import 'tailwindcss';
 
+@theme {
+  --color-primary: #1c1917;
+  --color-accent: #ca8a04;
+  --color-stone-950: #0c0a09;
+  --color-stone-50: #fafaf9;
+  
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --shadow-premium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
 @layer base {
+  :root {
+    --bg-main: var(--color-stone-50);
+    --text-main: var(--color-stone-950);
+    --border-main: rgba(28, 25, 23, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.4);
+  }
+
+  .dark {
+    --bg-main: var(--color-stone-950);
+    --text-main: var(--color-stone-50);
+    --border-main: rgba(250, 250, 249, 0.1);
+    --glass-bg: rgba(12, 10, 9, 0.7);
+    --glass-border: rgba(250, 250, 249, 0.1);
+  }
+
   body {
-    @apply m-0 transition-colors duration-300 antialiased;
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    @apply m-0 transition-all duration-700 antialiased;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    @apply font-bold tracking-tight;
   }
 
   code {
@@ -12,18 +47,45 @@
   }
 
   header {
-    @apply max-[992px]:!px-[15px];
-  }
-
-  main {
-    @apply max-[992px]:!p-[0px_15px];
+    @apply border-b border-stone-200/60 backdrop-blur-md sticky top-0 z-50;
   }
 
   footer {
-    @apply max-[992px]:!p-[15px] max-[992px]:!h-[35px];
+    @apply border-t border-stone-200/60;
   }
 
-  .ant-card-body {
-    @apply max-[992px]:!p-[5px];
+  /* Responsive Fixes for global elements */
+  @media (max-width: 992px) {
+    header {
+      padding-left: 15px !important;
+      padding-right: 15px !important;
+    }
+    main {
+      padding: 0 15px !important;
+    }
+    footer {
+      padding: 15px !important;
+      height: 35px !important;
+    }
+    .ant-card-body {
+      padding: 5px !important;
+    }
+  }
+
+  .ant-card {
+    @apply !rounded-xl !border-stone-100 !shadow-sm hover:!shadow-premium transition-all duration-300;
+  }
+
+  .ant-btn-primary {
+    @apply !bg-accent !border-accent hover:!opacity-90 !rounded-lg !h-auto !py-2.5 !px-6 !font-semibold transition-all active:scale-95;
+  }
+}
+
+@layer utilities {
+  .glass-premium {
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    @apply shadow-2xl;
   }
 }
